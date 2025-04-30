@@ -15,6 +15,8 @@ typedef struct Planet
 
     float planetAngle;
 
+    float randomVelocityAndTrajectory;
+
     int actualTrajectoryIndex;
     
     Vector2 trajectoryPositions[200];

@@ -1,5 +1,7 @@
 #include "raylib.h"
 #include "stdio.h"
+#include <stdlib.h>
+#include <time.h>
 #include "math.h"
 
 #include "planet.h"
@@ -27,15 +29,26 @@ int drawPlanet(void)
 
         float distance = planets[i].distancePlanetStar;
 
+        float randomVelocityAndTrajectory = planets[i].randomVelocityAndTrajectory;
+
         /*float totalAxisDistance = sqrt(distanceX * distanceX + distanceY * distanceY);
 
         float totalDistanceX = sqrt(distanceX * distanceX);
 
         float totalDistanceY = sqrt(distanceY * distanceY); */
 
-        float velocity = 0.3f / sqrtf(distance);
+        float velocity = randomVelocityAndTrajectory / sqrtf(distance);
 
-        planets[i].planetAngle += velocity;
+        // If the random velocity and trajectory is less than 0.5 rotate the planet orbit in the same way normal clocks spin
+        if (randomVelocityAndTrajectory <= 0.5)
+        {
+            planets[i].planetAngle += velocity;
+        }
+        // if not make it spin the other way
+        else
+        {
+            planets[i].planetAngle -= velocity;
+        }
 
         planets[i].positionPlanet.x = starPosition.x + distance * cos(planets[i].planetAngle);
         planets[i].positionPlanet.y = starPosition.y + distance * sin(planets[i].planetAngle);
@@ -88,6 +101,11 @@ int createNewPlanet(void)
         {
             return 0;
         }
+        srand(time(NULL) + clock());
+
+        float randomNumber = 0.3f + ((float)rand() / RAND_MAX) * (0.7f - 0.3f);
+
+        planets[planetCount].randomVelocityAndTrajectory = randomNumber;
 
         planets[planetCount].planetColor = generateRandomColor();
 
