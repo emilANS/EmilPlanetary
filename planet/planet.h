@@ -14,6 +14,10 @@ typedef struct Planet
     float distancePlanetStar;
 
     float planetAngle;
+
+    int actualTrajectoryIndex;
+    
+    Vector2 trajectoryPositions[200];
 } Planet;
 
 int drawPlanet(void);

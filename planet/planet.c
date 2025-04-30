@@ -40,6 +40,27 @@ int drawPlanet(void)
         planets[i].positionPlanet.x = starPosition.x + distance * cos(planets[i].planetAngle);
         planets[i].positionPlanet.y = starPosition.y + distance * sin(planets[i].planetAngle);
 
+        if (planets[i].actualTrajectoryIndex < 200)
+        {
+            planets[i].trajectoryPositions[planets[i].actualTrajectoryIndex] = (Vector2){planets[i].positionPlanet.x, planets[i].positionPlanet.y};
+
+            planets[i].actualTrajectoryIndex++;
+
+            for (int tr = 0; tr < sizeof(planets[i].trajectoryPositions) / sizeof(planets[i].trajectoryPositions[0]); tr++)
+            {
+                DrawPixel(planets[i].trajectoryPositions[tr].x, planets[i].trajectoryPositions[tr].y, planets[i].planetColor);
+            }
+        }
+        else
+        {
+            planets[i].actualTrajectoryIndex = 0;
+
+            for (int tr = 0; tr < sizeof(planets[i].trajectoryPositions) / sizeof(planets[i].trajectoryPositions[0]); tr++)
+            {
+                DrawPixel(planets[i].trajectoryPositions[tr].x, planets[i].trajectoryPositions[tr].y, planets[i].planetColor);
+            }
+        }
+
         DrawCircle(planets[i].positionPlanet.x, planets[i].positionPlanet.y, 15.0f, planets[i].planetColor);
     }
 
