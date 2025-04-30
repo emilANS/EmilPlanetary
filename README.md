@@ -5,4 +5,5 @@
 <ul>
   <li>Automatic orbit</li>
   <li>Velocity changes depending of how near of the star the planet is</li>
+  <li>Trajectories of planets are now visible by drawing pixels behind them</li>
 </ul>
