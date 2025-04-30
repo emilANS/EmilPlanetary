@@ -31,12 +31,6 @@ int drawPlanet(void)
 
         float randomVelocityAndTrajectory = planets[i].randomVelocityAndTrajectory;
 
-        /*float totalAxisDistance = sqrt(distanceX * distanceX + distanceY * distanceY);
-
-        float totalDistanceX = sqrt(distanceX * distanceX);
-
-        float totalDistanceY = sqrt(distanceY * distanceY); */
-
         float velocity = randomVelocityAndTrajectory / sqrtf(distance);
 
         // If the random velocity and trajectory is less than 0.5 rotate the planet orbit in the same way normal clocks spin
