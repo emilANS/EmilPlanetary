@@ -8,4 +8,7 @@
   <li>Trajectories of planets are now visible by drawing pixels behind them</li>
   <li>Added random velocities</li>
   <li>Added random trajectories like clock wise and no clock wise trajectories</li>
+  <li>Added zoom</li>
+  <li>Added camera movement</li>
+  <li>Added camera animation when zooming</li>
 </ul>
