@@ -2,10 +2,15 @@
 
 #include "star/star.h"
 #include "planet/planet.h"
+#include "utils/utils.h"
+
+Camera2D camera = {0};
 
 int main(void)
 {
-    
+
+    camera.zoom = 1.0f;
+
     const int screenWidth = 1000;
     const int screenHeight = 700;
 
@@ -19,16 +24,23 @@ int main(void)
 
         BeginDrawing();
 
-            ClearBackground(BLACK);
+        ClearBackground(BLACK);
 
-            drawStar(screenWidth, screenHeight);
+        BeginMode2D(camera);
+        
+        drawStar(screenWidth, screenHeight);
+        
+        createNewPlanet();
+        
+        drawPlanet();
+        
+        zoom();
 
-            createNewPlanet();
+        moveCamera();
 
-            drawPlanet();
+        EndMode2D();
 
         EndDrawing();
-
     }
 
     CloseWindow();

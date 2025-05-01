@@ -8,6 +8,7 @@
 #include "../star/star.h"
 
 #include "../utils/utils.h"
+#include "../main.h"
 
 #define MAX_PLANETS 50
 
@@ -31,16 +32,10 @@ int drawPlanet(void)
 
         float randomVelocityAndTrajectory = planets[i].randomVelocityAndTrajectory;
 
-        /*float totalAxisDistance = sqrt(distanceX * distanceX + distanceY * distanceY);
-
-        float totalDistanceX = sqrt(distanceX * distanceX);
-
-        float totalDistanceY = sqrt(distanceY * distanceY); */
-
         float velocity = randomVelocityAndTrajectory / sqrtf(distance);
 
         // If the random velocity and trajectory is less than 0.5 rotate the planet orbit in the same way normal clocks spin
-        if (randomVelocityAndTrajectory <= 0.5)
+        if (randomVelocityAndTrajectory <= 0.2)
         {
             planets[i].planetAngle += velocity;
         }
@@ -53,7 +48,7 @@ int drawPlanet(void)
         planets[i].positionPlanet.x = starPosition.x + distance * cos(planets[i].planetAngle);
         planets[i].positionPlanet.y = starPosition.y + distance * sin(planets[i].planetAngle);
 
-        if (planets[i].actualTrajectoryIndex < 200)
+        if (planets[i].actualTrajectoryIndex < 150)
         {
             planets[i].trajectoryPositions[planets[i].actualTrajectoryIndex] = (Vector2){planets[i].positionPlanet.x, planets[i].positionPlanet.y};
 
@@ -93,7 +88,7 @@ int createNewPlanet(void)
 {
     if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && planetCount < MAX_PLANETS)
     {
-        planets[planetCount].positionPlanet = GetMousePosition();
+        planets[planetCount].positionPlanet = GetScreenToWorld2D(GetMousePosition(), camera);
 
         planets[planetCount].distancePlanetStar = calculateDistancePlanetStar(planets[planetCount].positionPlanet.x, planets[planetCount].positionPlanet.y, starPosition.x, starPosition.y);
 
@@ -101,9 +96,10 @@ int createNewPlanet(void)
         {
             return 0;
         }
+
         srand(time(NULL) + clock());
 
-        float randomNumber = 0.3f + ((float)rand() / RAND_MAX) * (0.7f - 0.3f);
+        float randomNumber = 0.1f + ((float)rand() / RAND_MAX) * (0.3f - 0.1f);
 
         planets[planetCount].randomVelocityAndTrajectory = randomNumber;
 

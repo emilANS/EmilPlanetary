@@ -19,7 +19,7 @@ typedef struct Planet
 
     int actualTrajectoryIndex;
     
-    Vector2 trajectoryPositions[200];
+    Vector2 trajectoryPositions[150];
 } Planet;
 
 int drawPlanet(void);
