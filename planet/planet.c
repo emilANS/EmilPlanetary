@@ -69,7 +69,7 @@ int drawPlanet(void)
             }
         }
 
-        DrawCircle(planets[i].positionPlanet.x, planets[i].positionPlanet.y, 15.0f, planets[i].planetColor);
+        DrawCircle(planets[i].positionPlanet.x, planets[i].positionPlanet.y, planets[i].radiusPlanet, planets[i].planetColor);
     }
 
     return 0;
@@ -106,6 +106,8 @@ int createNewPlanet(void)
         planets[planetCount].planetColor = generateRandomColor();
 
         planets[planetCount].planetAngle = atan2(planets[planetCount].positionPlanet.y - starPosition.y, planets[planetCount].positionPlanet.x - starPosition.x);
+
+        planets[planetCount].radiusPlanet = 15.0f;
 
         planetCount++;
     }

@@ -6,13 +6,17 @@
 
 Camera2D camera = {0};
 
+const int screenWidth = 1000;
+const int screenHeight = 700;
+
 int main(void)
 {
 
     camera.zoom = 1.0f;
 
-    const int screenWidth = 1000;
-    const int screenHeight = 700;
+    camera.target = (Vector2){screenWidth / 2, screenHeight / 2};
+
+    camera.offset = (Vector2){screenWidth / 2, screenHeight / 2};
 
     InitWindow(screenWidth, screenHeight, "Emil Planetarium");
 
@@ -27,16 +31,18 @@ int main(void)
         ClearBackground(BLACK);
 
         BeginMode2D(camera);
-        
-        drawStar(screenWidth, screenHeight);
-        
-        createNewPlanet();
-        
-        drawPlanet();
-        
-        zoom();
 
-        moveCamera();
+            drawStar(screenWidth, screenHeight);
+
+            createNewPlanet();
+
+            drawPlanet();
+
+            zoom();
+
+            moveCamera();
+
+            focusCameraOnPlanet();
 
         EndMode2D();
 

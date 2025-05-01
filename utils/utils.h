@@ -7,4 +7,6 @@ int zoom(void);
 
 int moveCamera (void);
 
+int focusCameraOnPlanet(void);
+
 #endif
