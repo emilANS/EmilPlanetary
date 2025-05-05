@@ -11,4 +11,5 @@
   <li>Added zoom</li>
   <li>Added camera movement</li>
   <li>Added camera animation when zooming</li>
+  <li>You can now center your camera on planets</li>
 </ul>
