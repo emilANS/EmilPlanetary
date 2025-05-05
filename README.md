@@ -13,3 +13,6 @@
   <li>Added camera animation when zooming</li>
   <li>You can now center your camera on planets</li>
 </ul>
+
+<h2>Big update</h2>
+<h3>now planets orbit dynamically</h3>
