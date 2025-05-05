@@ -32,7 +32,7 @@ int main(void)
 
         BeginMode2D(camera);
 
-            drawStar(screenWidth, screenHeight);
+            /* drawStar(screenWidth, screenHeight); */
 
             createNewPlanet();
 
