@@ -12,6 +12,7 @@
   <li>Added camera movement</li>
   <li>Added camera animation when zooming</li>
   <li>You can now center your camera on planets</li>
+  <li>planets now orbit in a more realistic way</li>
 </ul>
 
 <h2>Big update</h2>
